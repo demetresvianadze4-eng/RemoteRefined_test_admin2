@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#101111">
+    <title>RemoteRefined — Admin</title>
+    <link rel="stylesheet" href="/admin.css">
+  </head>
+  <body>
+    <main class="admin-shell">
+      <section class="login-panel" id="loginPanel" aria-labelledby="loginTitle">
+        <a class="admin-brand" href="/" aria-label="Return to RemoteRefined"><span></span>RemoteRefined</a>
+        <div class="login-card">
+          <p class="admin-eyebrow">Protected workspace</p>
+          <h1 id="loginTitle">Edit the <em>edit.</em></h1>
+          <p class="muted">Sign in to create, change, remove, and photograph your product reviews.</p>
+          <form id="loginForm" class="stack-form">
+            <label>Password<input id="passwordInput" type="password" autocomplete="current-password" required placeholder="Your admin password"></label>
+            <button class="primary" type="submit">Unlock dashboard <span>→</span></button>
+            <p id="loginFeedback" class="feedback" aria-live="polite"></p>
+          </form>
+        </div>
+        <p class="tiny-note">This area is not listed in site navigation. Its content and controls are protected by the server.</p>
+      </section>
+
+      <section class="dashboard hidden" id="dashboard" aria-live="polite">
+        <header class="dashboard-header">
+          <a class="admin-brand" href="/"><span></span>RemoteRefined</a>
+          <div class="header-actions"><a href="/" target="_blank" rel="noopener">View site ↗</a><button class="text-button" id="logoutButton" type="button">Sign out</button></div>
+        </header>
+        <div class="dashboard-intro">
+          <div><p class="admin-eyebrow">Content management</p><h1>Your reviews,<br><em>considered.</em></h1></div>
+          <button class="primary" id="newReviewButton" type="button">New review <span>+</span></button>
+        </div>
+        <div class="dashboard-grid">
+          <aside class="review-list-wrap">
+            <div class="list-heading"><h2>All reviews</h2><span id="reviewCount">0</span></div>
+            <div id="reviewList" class="review-list" aria-label="Review list"></div>
+          </aside>
+          <section class="editor-panel" aria-labelledby="editorTitle">
+            <div class="editor-heading"><div><p class="admin-eyebrow">Review editor</p><h2 id="editorTitle">Create a review</h2></div><button id="deleteButton" class="danger hidden" type="button">Delete review</button></div>
+            <form id="reviewForm" class="editor-form">
+              <input id="reviewId" type="hidden">
+              <div class="two-columns"><label>Product name<input id="titleInput" maxlength="120" required placeholder="e.g. Atlas Mesh Pro"></label><label>Category<select id="categoryInput" required><option value="chairs">Ergonomic chairs</option><option value="desks">Standing desks</option><option value="video">Cameras & calls</option><option value="software">Productivity software</option></select></label></div>
+              <div class="two-columns narrow"><label>Remote score<input id="scoreInput" type="number" min="0" max="10" step="0.1" required value="8.5"></label><label>Visual mark<input id="artInput" maxlength="12" value="✦" placeholder="✦"></label></div>
+              <label>Review summary<textarea id="copyInput" maxlength="700" required placeholder="What makes this product worth considering?"></textarea><span class="helper">This appears on the category and search pages.</span></label>
+              <div class="photo-editor"><div><span class="label-name">Product photo</span><p class="helper">PNG, JPEG, or WebP · 5 MB maximum.</p></div><label class="upload-control"><input id="photoInput" type="file" accept="image/png,image/jpeg,image/webp"><span id="uploadLabel">Upload photo</span></label></div>
+              <input id="imageUrlInput" type="hidden">
+              <div class="image-preview empty" id="imagePreview"><span id="imageFallback">✦</span><img id="previewImage" alt="Selected product preview"></div>
+              <button id="removePhotoButton" type="button" class="remove-photo hidden">Remove photo from review</button>
+              <div class="form-footer"><p id="editorFeedback" class="feedback" aria-live="polite"></p><button id="saveButton" class="primary" type="submit">Save review <span>→</span></button></div>
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="/admin.js"></script>
+  </body>
+</html>
